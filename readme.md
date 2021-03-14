@@ -6,6 +6,12 @@ on Azure serverless functions.
 Every response contains a fresh JWT that shall be used as session. In the following the documentation shows only the JWT's payload.
 Example: `[jwt-header].[jwt-payload].[jwt-signature]`
 
+## Install
+
+```bash
+npm install basecode/ipa-return-to-work-api#05c7c26 --save
+```
+
 ## login
 
 ```bash
