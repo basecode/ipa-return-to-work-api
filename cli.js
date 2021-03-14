@@ -5,25 +5,16 @@ const command = process.argv[2];
 switch(command) {
     case 'start':
         const path = require('path');
-        const fs = require('fs');
         const spawn = require('child_process').spawn;
-        const fork = require('child_process').fork;
-        const commandExists = require('command-exists');
-        const args = process.argv;
 
-        function main() {
-            const bin = path.resolve(path.join(path.dirname(__filename), '..', 'bin'));
-            const funcProc = spawn(bin + '/func', args.slice(2), {
-                stdio: [process.stdin, process.stdout, process.stderr, 'pipe']
-            });
-
-            funcProc.on('exit', code => {
-                process.exit(code);
-            });
-        }
-
-        main();
+        const bin = path.resolve(path.join(path.dirname(__filename), '..', 'azure-functions-core-tools/bin'));
+        process.env.ipaReturnToWorkApiProcess = spawn(bin + '/func', ['start', '--javascript'], {
+            cwd: path.dirname(__filename),
+            detached: true
+        });
         break;
-    case 'end':
+    case 'stop':
+        const kill = require('kill-port');
+        await kill('7071', 'tcp');
         break;
 };

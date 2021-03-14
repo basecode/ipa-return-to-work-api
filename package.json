@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "azure-functions-core-tools": "^3.0.3331",
+    "kill-port": "^1.6.1",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "ava": "^3.15.0",
-    "kill-port": "^1.6.1",
     "node-fetch": "^2.6.1"
   }
 }
