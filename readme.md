@@ -12,6 +12,18 @@ Example: `[jwt-header].[jwt-payload].[jwt-signature]`
 npm install basecode/ipa-return-to-work-api#92a8287 --save
 ```
 
+Add to package.json:
+
+```json
+{
+  "prestart": "ipa-return-to-work-api start",
+  "start": "echo 'done'",
+  "poststart": "ipa-return-to-work-api stop"
+}
+```
+
+or start manually from project root: `npx ipa-return-to-work-api start` resp. `npx ipa-return-to-work-api stop`
+
 ## login
 
 ```bash
