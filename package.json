@@ -2,18 +2,18 @@
   "name": "ipa-return-to-work-api",
   "version": "1.0.0",
   "description": "",
+  "bin": "cli.js",
   "scripts": {
     "start": "func start",
     "pretest": "npm start &",
     "test": "ava"
-
   },
   "dependencies": {
+    "azure-functions-core-tools": "^3.0.3331",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "ava": "^3.15.0",
-    "azure-functions-core-tools": "^3.0.3331",
     "kill-port": "^1.6.1",
     "node-fetch": "^2.6.1"
   }
