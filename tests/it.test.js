@@ -25,7 +25,7 @@ const request = async (path, method, body = '', userHeaders = {}) => {
 test.serial.before(async t => {
     const checkConnection = async () => {
         try {
-            const response = await fetch(`${HTTP_API_ENDPOINT}/healthcheck`);
+            const response = await fetch(`${HTTP_API_ENDPOINT}/healthcheck`, { method: 'HEAD'});
             if (response.status === 404) {
                 return await checkConnection();
             }

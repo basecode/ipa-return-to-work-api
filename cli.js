@@ -15,6 +15,6 @@ switch(command) {
         break;
     case 'stop':
         const kill = require('kill-port');
-        await kill('7071', 'tcp');
+        kill('7071', 'tcp');
         break;
 };
