@@ -17,8 +17,7 @@ Add to package.json:
 ```json
 {
   "prestart": "ipa-return-to-work-api start",
-  "start": "echo 'done'",
-  "poststart": "ipa-return-to-work-api stop"
+  "start": "echo 'done'"
 }
 ```
 
@@ -27,7 +26,7 @@ or start manually from project root: `npx ipa-return-to-work-api start` resp. `n
 ## login
 
 ```bash
-JWT=$(curl --data '{"code":"993d9d7"}' \
+JWT=$(curl --data '{"code":"1111111"}' \
   --header "Content-Type: application/json"  \
   --request POST http://localhost:7071/api/login \
 )
