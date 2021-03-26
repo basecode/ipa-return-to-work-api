@@ -12,7 +12,7 @@ switch(command) {
         kill('7071', 'tcp');
 
         const bin = path.resolve(path.join(path.dirname(__filename), '..', 'azure-functions-core-tools/bin'));
-        spawn(bin + '/func', ['start', '--javascript'], {
+        spawn(bin + '/func', ['start', '--javascript', '--cors=*'], {
             cwd: path.dirname(__filename),
             detached: true
         });

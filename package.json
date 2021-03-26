@@ -4,7 +4,7 @@
   "description": "",
   "bin": "cli.js",
   "scripts": {
-    "start": "func start",
+    "start": "func start--cors=*",
     "pretest": "npm start &",
     "test": "ava"
   },
