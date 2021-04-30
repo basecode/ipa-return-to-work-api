@@ -38,3 +38,10 @@ exports.overwriteWithRequestedSpot = (from, owner) => (currentValue) => {
         ...{ free: false, owner }
     } : currentValue;
 };
+
+exports.overwriteWithDeletedSpot = (from, owner) => (currentValue) => {
+    return currentValue.owner === owner && currentValue.from === from ? {
+        ...currentValue,
+        ...{ free: true, owner: null }
+    } : currentValue;
+};

@@ -18,6 +18,13 @@ module.exports = async function (context, req) {
                         .map(cafeteriaUtils.overwriteWithOldStateSpot(oldState.cafeteria_spots))
                         .map(cafeteriaUtils.overwriteWithRequestedSpot(req.body.spot_request_from, oldState.userId))
                     };
+            case 'DELETE':
+                return {
+                    cafeteria_spots: [...Array(cafeteriaUtils.consts.TIMESLOTS_ALL_DURATION / cafeteriaUtils.consts.TIMESLOTS_MINUTES)]
+                        .map(cafeteriaUtils.availableSpots(req.headers['user-agent']))
+                        .map(cafeteriaUtils.overwriteWithOldStateSpot(oldState.cafeteria_spots))
+                        .map(cafeteriaUtils.overwriteWithDeletedSpot(req.body.spot_request_from, oldState.userId))
+                    };
         };
     });
 }

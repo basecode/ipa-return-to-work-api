@@ -172,6 +172,45 @@ test.serial('cafeteria post', async t => {
     ])
 });
 
+test.serial('cafeteria delete', async t => {
+    const session = jsonwebtoken.sign({
+        userId: '27372',
+        userName: 'Tatyana',
+        questionnaire_result: true,
+        seat: 'iii',
+        location: 'my-location',
+        cafeteria_spots: [
+            { from: 1615724400000, to: 1615724700000, free: false, owner: '987654'},
+            { from: 1615724700000, to: 1615725000000, free: false, owner: '27372'},
+            { from: 1615725000000, to: 1615725300000, free: true, owner: null},
+            { from: 1615725300000, to: 1615725600000, free: true, owner: null},
+            { from: 1615725600000, to: 1615725900000, free: false, owner: '987654'},
+            { from: 1615725900000, to: 1615726200000, free: true, owner: null},
+            { from: 1615726200000, to: 1615726500000, free: true, owner: null},
+            { from: 1615726500000, to: 1615726800000, free: true, owner: null}
+        ]
+    }, PSEUDO_SECRET);
+    
+    const jwt = await request('/cafeteria', 'DELETE', { spot_request_from: 1615724700000 }, { session });
+    
+    const payloadDecoded = jsonwebtoken.verify(jwt, PSEUDO_SECRET);
+    t.is(payloadDecoded.userId, '27372');
+    t.is(payloadDecoded.userName, 'Tatyana');
+    t.is(payloadDecoded.questionnaire_result, true);
+    t.is(payloadDecoded.seat, 'iii');
+    t.is(payloadDecoded.location, 'my-location');
+    t.deepEqual(payloadDecoded.cafeteria_spots, [
+        { from: 1615724400000, to: 1615724700000, free: false, owner: '987654'},
+        { from: 1615724700000, to: 1615725000000, free: true, owner: null},
+        { from: 1615725000000, to: 1615725300000, free: true, owner: null},
+        { from: 1615725300000, to: 1615725600000, free: true, owner: null},
+        { from: 1615725600000, to: 1615725900000, free: false, owner: '987654'},
+        { from: 1615725900000, to: 1615726200000, free: true, owner: null},
+        { from: 1615726200000, to: 1615726500000, free: true, owner: null},
+        { from: 1615726500000, to: 1615726800000, free: true, owner: null}
+    ])
+});
+
 test.after( async () => {
     const kill = require('kill-port');
     await kill(PORT, 'tcp');
