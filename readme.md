@@ -9,7 +9,7 @@ Example: `[jwt-header].[jwt-payload].[jwt-signature]`
 ## Install
 
 ```bash
-npm install basecode/ipa-return-to-work-api#f8f1152 --save
+npm install basecode/ipa-return-to-work-api#f78b874 --save
 ```
 
 Add to package.json:
