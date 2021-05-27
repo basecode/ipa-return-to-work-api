@@ -64,7 +64,7 @@ test.serial('login Tobias', async t => {
     t.is(payloadDecoded.userId, '27373');
     t.is(payloadDecoded.userName, 'Tobias');
     t.is(payloadDecoded.questionnaire_result, false);
-    t.is(payloadDecoded.seat, '122');
+    t.is(payloadDecoded.seat, '112');
     t.is(payloadDecoded.location, 'Basel');
     t.deepEqual(payloadDecoded.cafeteria_spots, DEFAULT_SPOTS)
 });

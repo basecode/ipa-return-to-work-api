@@ -7,7 +7,7 @@ module.exports = async function (context, req) {
         return {
             userId: users[req.body.code].id,
             userName: users[req.body.code].name,
-            seat: '122',
+            seat: users[req.body.code].seat,
             cafeteria_spots: [...Array(cafeteriaUtils.consts.TIMESLOTS_ALL_DURATION / cafeteriaUtils.consts.TIMESLOTS_MINUTES)]
               .map(cafeteriaUtils.availableSpots(req.headers['user-agent']))
               .map(cafeteriaUtils.overwriteWithRandomSpots(['12', '123']))
